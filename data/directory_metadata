@@ -1,0 +1,10 @@
+This purpose of this directory is to store the final
+Activity #06. 
+
+This directory contains two main files, one of which is the
+actual R code for Activity #06. The second is the US Armed
+Forces dataset that I reference in this activity, in the data
+folder. 
+
+The Armed Forces dataset is in .csv format, and includes
+information about demographics in the military. 
