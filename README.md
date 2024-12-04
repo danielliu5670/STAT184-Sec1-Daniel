@@ -33,4 +33,24 @@ Pay.Grade = case_when(
 At this point, the dataframe `ArmedForcesGroup` is tidy. However, the dataframe where each case is an individual soldier still needs to be created.
 
 In the fifth and final section, I make this individual soldier dataframe in three main steps. 
-1. 
+1. First, I cut off all of the NA values from the dataframe, which conveniently were all at the end. Then, I used `parse_number()` to reduce commas and `uncount()` to actually uncount.
+2. Then, I extract only the NA values from the dataframe, and use `select()` to get rid of the Count column.
+3. Finally, I bind them together using `bind_rows()`.
+
+# Results / Conclusion
+
+After completing this assignment, I mainly learned that wrangling data can be really difficult, especially when it comes from a government source that is not very tidy to begin with. When I first started the assignment, I assumed it would be easy to tidy, since it looked like it already had most of the work done, but it took much more code, and much more time. In the future, when working with bigger datasets, especially ones that I know need to be uncounted, I should probably select ones that are much more tidy (which I can more accurately gauge now that I actually know what a tidy dataset looks like). 
+
+These two images show before and after pictures of the dataset - if we were to just look at the `before` dataset, it would seem pretty tidy, but not when compared to the `after` dataset:
+
+`Before:` 
+<img width="300" alt="Screenshot 2024-12-04 at 6 43 12 PM" src="https://github.com/user-attachments/assets/dbd8440b-1e90-4d5f-ac15-84bcd0afea90">
+`After:` 
+<img width="300" alt="Screenshot 2024-12-04 at 6 45 26 PM" src="https://github.com/user-attachments/assets/cd1b3cc2-f029-4546-92f8-2730d5c6e85f">
+
+# Contact
+
+Email: dxl5670@psu.edu
+
+
+
