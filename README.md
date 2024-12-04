@@ -14,4 +14,23 @@ The first section (up to the first `pivot_longer()`) aimed to get rid of the unn
 
 Then, in the second section, I used a series of `pivot_longer()` and one `separate_wider_delim()` commands in order to actually begin to develop the columns I would want in my final, tidied dataset. This mainly includes separating out each branch by gender. 
 
-In the third section, I created five different dataframes (`ArmedForcesArmy`, `ArmedForcesNavy`, etc.), one for each branch. 
+In the third section, I created five different dataframes (`ArmedForcesArmy`, `ArmedForcesNavy`, etc.), one for each branch. The reason I did this is because the way the tidied dataset is at this point, the branches are still in a "wide" format, and I need them to be in a longer format. Additionally, there is a huge amount of redundancy, but calling `distinct()` on the entire dataset at the time wouldn't have worked. After extracting out each individual dataframe using `select()`, I called `distinct()` to remove redundancy, and used `rename()` to make the column names generic again (`Count`, `Branch`, and `Sex`). 
+
+Then, in the fourth section, I began by using `bind_rows()` to combine these dataframes into one. At this point, the data is "tidy" in the sense that the case is correct (it is a group of soldiers that are uniquely identified by their Branch and Sex). However, the bulk of this section was a huge `mutate()` function that individually renamed each Pay Grade using the below format:
+
+```
+Pay.Grade = case_when(
+      Pay.Grade == [PAY GRADE] ~ case_when(
+        Branch == [BRANCH] ~ [NAME],
+        ..
+        ..
+        .default = Pay.Grade 
+      ),
+      .default = Pay.Grade
+    )
+```
+
+At this point, the dataframe `ArmedForcesGroup` is tidy. However, the dataframe where each case is an individual soldier still needs to be created.
+
+In the fifth and final section, I make this individual soldier dataframe in three main steps. 
+1. 
